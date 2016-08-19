@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="React.S.Pair.html">
+<link rel="next" href="React.S.Compare.html">
+<link rel="Up" href="React.S.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="React" rel="Chapter" href="React.html"><title>React.S.Option</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="React.S.Pair.html" title="React.S.Pair">Previous</a>
+&nbsp;<a class="up" href="React.S.html" title="React.S">Up</a>
+&nbsp;<a class="post" href="React.S.Compare.html" title="React.S.Compare">Next</a>
+</div>
+<h1>Module <a href="type_React.S.Option.html">React.S.Option</a></h1>
+
+<pre><span class="keyword">module</span> Option: <code class="code"><span class="keyword">sig</span></code> <a href="React.S.Option.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><span id="VALnone"><span class="keyword">val</span> none</span> : <code class="type">'a option <a href="React.html#TYPEsignal">React.signal</a></code></pre><div class="info ">
+<code class="code">none</code> is <code class="code"><span class="constructor">S</span>.const <span class="constructor">None</span></code>.<br>
+</div>
+
+<pre><span id="VALsome"><span class="keyword">val</span> some</span> : <code class="type">'a <a href="React.html#TYPEsignal">React.signal</a> -> 'a option <a href="React.html#TYPEsignal">React.signal</a></code></pre><div class="info ">
+<code class="code">some s</code> is <code class="code"><span class="constructor">S</span>.map ~eq (<span class="keyword">fun</span> v <span class="keywordsign">-&gt;</span> <span class="constructor">Some</span> v) <span class="constructor">None</span></code>, where <code class="code">eq</code> uses
+        <code class="code">s</code>'s equality function to test the <code class="code"><span class="constructor">Some</span> v</code>'s equalities.<br>
+</div>
+
+<pre><span id="VALvalue"><span class="keyword">val</span> value</span> : <code class="type">?eq:('a -> 'a -> bool) -><br>       default:[ `Always of 'a <a href="React.html#TYPEsignal">React.signal</a> | `Init of 'a <a href="React.html#TYPEsignal">React.signal</a> ] -><br>       'a option <a href="React.html#TYPEsignal">React.signal</a> -> 'a <a href="React.html#TYPEsignal">React.signal</a></code></pre><div class="info ">
+<code class="code">value default s</code> is <code class="code">s</code> with only its <code class="code"><span class="constructor">Some</span> v</code> values.
+        Whenever <code class="code">s</code> is <code class="code"><span class="constructor">None</span></code>, if <code class="code">default</code> is <code class="code"><span class="keywordsign">`</span><span class="constructor">Always</span> dv</code> then
+        the current value of <code class="code">dv</code> is used instead. If <code class="code">default</code>
+        is <code class="code"><span class="keywordsign">`</span><span class="constructor">Init</span> dv</code> the current value of <code class="code">dv</code> is only used
+        if there's no value at creation time, otherwise the last
+        <code class="code"><span class="constructor">Some</span> v</code> value of <code class="code">s</code> is used.
+        <ul>
+<li>[<code class="code">value ~default s</code>]<sub class="subscript">t</sub> <code class="code">= v</code> if [<code class="code">s</code>]<sub class="subscript">t</sub> <code class="code">= <span class="constructor">Some</span> v</code></li>
+<li>[<code class="code">value ~default:(<span class="keywordsign">`</span><span class="constructor">Always</span> d) s</code>]<sub class="subscript">t</sub> <code class="code">=</code> [<code class="code">d</code>]<sub class="subscript">t</sub>
+          if [<code class="code">s</code>]<sub class="subscript">t</sub> <code class="code">= <span class="constructor">None</span></code></li>
+<li>[<code class="code">value ~default:(<span class="keywordsign">`</span><span class="constructor">Init</span> d) s</code>]<sub class="subscript">0</sub> <code class="code">=</code> [<code class="code">d</code>]<sub class="subscript">0</sub>
+          if [<code class="code">s</code>]<sub class="subscript">0</sub> <code class="code">= <span class="constructor">None</span></code></li>
+<li>[<code class="code">value ~default:(<span class="keywordsign">`</span><span class="constructor">Init</span> d) s</code>]<sub class="subscript">t</sub> <code class="code">=</code>
+           [<code class="code">value ~default:(<span class="keywordsign">`</span><span class="constructor">Init</span> d) s</code>]<sub class="subscript">t'</sub>
+          if [<code class="code">s</code>]<sub class="subscript">t</sub> <code class="code">= <span class="constructor">None</span></code> and t' is the greatest t' &lt; t
+          with [<code class="code">s</code>]<sub class="subscript">t'</sub> <code class="code">&lt;&gt; <span class="constructor">None</span></code> or 0 if there is no such <code class="code">t'</code>.</li>
+</ul>
+<br>
+</div>
+</body></html>
