@@ -1,0 +1,41 @@
+{
+    "name": "react",
+    "optionalDependencies": {},
+    "exportedEnvVars": {
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.2.0"
+        },
+        "react_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "1.2.0"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        }
+    },
+    "version": "1.2.0",
+    "dependencies": {
+        "ocamlbuild": "https://github.com/npm-opam/ocamlbuild",
+        "ocamlfind": "https://github.com/npm-opam/ocamlfind",
+        "ocaml": "https://github.com/npm-opam/ocaml.git#npm-4.02.3",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && ocaml pkg/git.ml && ocaml pkg/build.ml native=true native-dynlink=true && (opam-installer --prefix=$opam_prefix || true) && injectOpamEnvs"
+    }
+}
