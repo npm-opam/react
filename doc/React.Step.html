@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="React.S.html">
+<link rel="Up" href="React.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="React" rel="Chapter" href="React.html"><link title="Steps" rel="Section" href="#1_Steps">
+<title>React.Step</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="React.S.html" title="React.S">Previous</a>
+&nbsp;<a class="up" href="React.html" title="React">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_React.Step.html">React.Step</a></h1>
+
+<pre><span class="keyword">module</span> Step: <code class="code"><span class="keyword">sig</span></code> <a href="React.Step.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Update steps.
+<p>
+
+    Update functions returned by <a href="React.S.html#VALcreate"><code class="code"><span class="constructor">React</span>.<span class="constructor">S</span>.create</code></a> and <a href="React.E.html#VALcreate"><code class="code"><span class="constructor">React</span>.<span class="constructor">E</span>.create</code></a>
+    implicitely create and execute update steps when used without
+    specifying their <code class="code">step</code> argument.
+<p>
+
+    Using explicit <a href="React.html#TYPEstep"><code class="code"><span class="constructor">React</span>.step</code></a> values with these functions gives more control on
+    the time when the update step is perfomed and allows to perform
+    simultaneous <a href="React.html#primitives">primitive</a> signal updates and event
+    occurences. See also the documentation about <a href="React.html#steps">update steps</a> and
+    <a href="React.html#simultaneity">simultaneous events</a>.<br>
+</div>
+<hr width="100%">
+<br>
+<h1 id="1_Steps">Steps</h1><br>
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="React.html#TYPEstep">React.step</a></code> </pre>
+<div class="info ">
+The type for update steps.<br>
+</div>
+
+
+<pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="React.html#TYPEstep">React.step</a></code></pre><div class="info ">
+<code class="code">create ()</code> is a new update step.<br>
+</div>
+
+<pre><span id="VALexecute"><span class="keyword">val</span> execute</span> : <code class="type"><a href="React.html#TYPEstep">React.step</a> -> unit</code></pre><div class="info ">
+<code class="code">execute step</code> executes the update step.<br>
+<b>Raises</b> <code>Invalid_argument</code> if <code class="code">step</code> was already executed.<br>
+</div>
+</body></html>

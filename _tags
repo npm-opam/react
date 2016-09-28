@@ -1,0 +1,11 @@
+<**/*.{ml,mli}> : bin_annot, annot
+
+<src> : include
+<src/react_top.*> : package(compiler-libs.toplevel)
+
+<test> : include
+<test/clock.{native,byte}> : use_unix
+<test/breakout.{native,byte}> : use_unix
+<test/js_test.{ml,native,byte}> : package(js_of_ocaml), \
+                                  package(js_of_ocaml.syntax), \
+                                  syntax(camlp4o)

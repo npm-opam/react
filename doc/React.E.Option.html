@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="React.E.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="React" rel="Chapter" href="React.html"><title>React.E.Option</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="React.E.html" title="React.E">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_React.E.Option.html">React.E.Option</a></h1>
+
+<pre><span class="keyword">module</span> Option: <code class="code"><span class="keyword">sig</span></code> <a href="React.E.Option.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+Events with option occurences.<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALsome"><span class="keyword">val</span> some</span> : <code class="type">'a <a href="React.html#TYPEevent">React.event</a> -> 'a option <a href="React.html#TYPEevent">React.event</a></code></pre><div class="info ">
+<code class="code">some e</code> is <code class="code">map (<span class="keyword">fun</span> v <span class="keywordsign">-&gt;</span> <span class="constructor">Some</span> v) e</code>.<br>
+</div>
+
+<pre><span id="VALvalue"><span class="keyword">val</span> value</span> : <code class="type">?default:'a <a href="React.html#TYPEsignal">React.signal</a> -> 'a option <a href="React.html#TYPEevent">React.event</a> -> 'a <a href="React.html#TYPEevent">React.event</a></code></pre><div class="info ">
+<code class="code">value default e</code> either silences <code class="code"><span class="constructor">None</span></code> occurences if <code class="code">default</code> is
+        unspecified or replaces them by the value of <code class="code">default</code> at the occurence
+        time.
+        <ul>
+<li>[<code class="code">value ~default e</code>]<sub class="subscript">t</sub><code class="code"> = v</code> if [<code class="code">e</code>]<sub class="subscript">t</sub> <code class="code">= <span class="constructor">Some</span> (<span class="constructor">Some</span> v)</code>.</li>
+<li>[<code class="code">value ?default:<span class="constructor">None</span> e</code>]<sub class="subscript">t</sub><code class="code"> = <span class="constructor">None</span></code> if [<code class="code">e</code>]<sub class="subscript">t</sub> = <code class="code"><span class="constructor">None</span></code>.</li>
+<li>[<code class="code">value ?default:(<span class="constructor">Some</span> s) e</code>]<sub class="subscript">t</sub><code class="code"> = v</code>
+           if [<code class="code">e</code>]<sub class="subscript">t</sub> = <code class="code"><span class="constructor">None</span></code> and [<code class="code">s</code>]<sub class="subscript">t</sub> <code class="code">= v</code>.</li>
+</ul>
+<br>
+</div>
+</body></html>
